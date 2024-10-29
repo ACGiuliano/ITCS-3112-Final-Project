@@ -36,9 +36,11 @@
             // 
             Enter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Enter.Font = new Font("Segoe UI", 12F);
-            Enter.Location = new Point(165, 531);
+            Enter.Location = new Point(232, 531);
+            Enter.MaximumSize = new Size(280, 55);
+            Enter.MinimumSize = new Size(100, 55);
             Enter.Name = "Enter";
-            Enter.Size = new Size(249, 55);
+            Enter.Size = new Size(242, 55);
             Enter.TabIndex = 0;
             Enter.Text = "Start";
             Enter.UseVisualStyleBackColor = true;
@@ -48,9 +50,11 @@
             // 
             Exit.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Exit.Font = new Font("Segoe UI", 12F);
-            Exit.Location = new Point(604, 531);
+            Exit.Location = new Point(581, 531);
+            Exit.MaximumSize = new Size(280, 55);
+            Exit.MinimumSize = new Size(100, 55);
             Exit.Name = "Exit";
-            Exit.Size = new Size(249, 55);
+            Exit.Size = new Size(242, 55);
             Exit.TabIndex = 1;
             Exit.Text = "Quit";
             Exit.UseVisualStyleBackColor = true;
@@ -61,9 +65,11 @@
             AcceptButton = Enter;
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1085, 903);
+            ClientSize = new Size(1078, 844);
             Controls.Add(Exit);
             Controls.Add(Enter);
+            MaximumSize = new Size(1100, 900);
+            MinimumSize = new Size(1100, 900);
             Name = "CalorieCounter";
             Text = "Calorie Counter";
             ResumeLayout(false);
