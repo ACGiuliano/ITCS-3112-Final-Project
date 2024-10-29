@@ -1,10 +1,20 @@
 namespace CalorieCounter
 {
-    public partial class Form1 : Form
+    public partial class CalorieCounter : Form
     {
-        public Form1()
+        public CalorieCounter()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
