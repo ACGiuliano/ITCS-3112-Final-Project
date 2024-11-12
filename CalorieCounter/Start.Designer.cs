@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Enter = new Button();
+            btnStart = new Button();
             Exit = new Button();
             SuspendLayout();
             // 
-            // Enter
+            // btnStart
             // 
-            Enter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Enter.Font = new Font("Segoe UI", 12F);
-            Enter.Location = new Point(232, 531);
-            Enter.MaximumSize = new Size(280, 55);
-            Enter.MinimumSize = new Size(100, 55);
-            Enter.Name = "Enter";
-            Enter.Size = new Size(242, 55);
-            Enter.TabIndex = 0;
-            Enter.Text = "Start";
-            Enter.UseVisualStyleBackColor = true;
-            Enter.Click += button1_Click;
+            btnStart.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnStart.Font = new Font("Segoe UI", 12F);
+            btnStart.Location = new Point(232, 531);
+            btnStart.MaximumSize = new Size(280, 55);
+            btnStart.MinimumSize = new Size(100, 55);
+            btnStart.Name = "btnStart";
+            btnStart.Size = new Size(242, 55);
+            btnStart.TabIndex = 0;
+            btnStart.Text = "Start";
+            btnStart.UseVisualStyleBackColor = true;
+            btnStart.Click += button1_Click;
             // 
             // Exit
             // 
@@ -62,22 +62,23 @@
             // 
             // CalorieCounter
             // 
-            AcceptButton = Enter;
+            AcceptButton = btnStart;
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1078, 844);
             Controls.Add(Exit);
-            Controls.Add(Enter);
+            Controls.Add(btnStart);
             MaximumSize = new Size(1100, 900);
             MinimumSize = new Size(1100, 900);
             Name = "CalorieCounter";
             Text = "Calorie Counter";
+            Load += CalorieCounter_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button Enter;
+        private Button btnStart;
         private Button Exit;
     }
 }
