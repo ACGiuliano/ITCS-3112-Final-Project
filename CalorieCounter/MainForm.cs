@@ -19,7 +19,10 @@ namespace CalorieCounter
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // opens new profile form when clicked, hides this form until user goes back
+            NewProfile newProfile = new NewProfile();
+            newProfile.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
