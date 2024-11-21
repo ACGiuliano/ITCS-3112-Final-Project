@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace CalorieCounter
 {
-    public partial class MainForm : Form
+    public partial class NewProfile : Form
     {
-        public MainForm()
+        public NewProfile()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void NewProfile_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
