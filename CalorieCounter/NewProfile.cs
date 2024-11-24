@@ -60,18 +60,20 @@ namespace CalorieCounter
                 // create User
                 User newUser = new User(userName, userHeight, userWeight, userGoalWeight);
 
+                // Adds user to JSON file
+                ProfileManager.AddProfile(newUser);
+
                 MessageBox.Show($"Profile {userName} created.", "Profile Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                /*
+                 * Takes user to main form after new profile
+                 * created, eventually want to just bypass
+                 * main form and take user to day creation
+                 * but this will work for now.
+                 */
                 mainForm.Show();
                 this.Hide();
 
-                /* 
-                 * Need to include filepath to save 
-                 * User info to, will implement at 
-                 * later date, just trying to get
-                 * main functionality down before I
-                 * add additional features. 
-                 */
             }
             // error catching incase input validation doesn't work.
             catch (FormatException)

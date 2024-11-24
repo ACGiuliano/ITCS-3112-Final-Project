@@ -154,6 +154,8 @@
             Controls.Add(UsernameBox);
             Controls.Add(userNameLabel);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MaximumSize = new Size(606, 750);
+            MinimumSize = new Size(606, 750);
             Name = "NewProfile";
             Text = "NewProfile";
             Load += NewProfile_Load;
