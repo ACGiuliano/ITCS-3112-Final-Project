@@ -16,7 +16,7 @@ namespace CalorieCounter
             this.Hide();
 
             // Will close CalorieCounter when MainForm is closed
-            mainForm.FormClosed += (s, args) => this.Close();
+            mainForm.FormClosed += (s, args) => this.Close();            
         }
 
         private void button2_Click(object sender, EventArgs e)
