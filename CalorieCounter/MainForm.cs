@@ -27,7 +27,9 @@ namespace CalorieCounter
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            LoadProfile loadProfile = new LoadProfile(this);
+            loadProfile.Show();
+            this.Hide();
         }
 
     }
