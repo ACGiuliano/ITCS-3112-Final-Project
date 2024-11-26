@@ -65,13 +65,8 @@ namespace CalorieCounter
 
                 MessageBox.Show($"Profile {userName} created.", "Profile Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                /*
-                 * Takes user to main form after new profile
-                 * created, eventually want to just bypass
-                 * main form and take user to day creation
-                 * but this will work for now.
-                 */
-                mainForm.Show();
+                HomeScreen homeScreen = new HomeScreen();
+                homeScreen.Show();
                 this.Hide();
 
             }
