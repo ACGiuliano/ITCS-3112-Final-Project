@@ -53,6 +53,7 @@ namespace CalorieCounter
 
         public static void AddDayToUser(User user, Day newDay)
         {
+            user.Days.Add(newDay);
             var users = LoadProfiles();
             var existingUser = users.FirstOrDefault(u => u.userName == user.userName);
 
