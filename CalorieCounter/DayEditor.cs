@@ -152,5 +152,30 @@ namespace CalorieCounter
             }
             UpdateSummary();
         }
+
+        private void RemoveMealBtn_Click(object sender, EventArgs e)
+        {
+            if (listBoxMeals.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must select a meal to remove.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string selectedMealType = listBoxMeals.SelectedItem.ToString().Split('-')[0].Trim();
+            Meal selectedMeal = selectedDay.Meals.FirstOrDefault(m => m.mealType == selectedMealType);
+
+            if (selectedMeal != null)
+            {
+                selectedDay.Meals.Remove(selectedMeal);
+                listBoxMeals.Items.Remove(listBoxMeals.SelectedItem);
+                listBoxFood.Items.Clear();
+                UpdateMealsBox();
+                UpdateSummary();
+
+                MessageBox.Show("Meal removed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
     }
 }

@@ -79,6 +79,7 @@
             RemoveMealBtn.TabIndex = 7;
             RemoveMealBtn.Text = "Remove";
             RemoveMealBtn.UseVisualStyleBackColor = true;
+            RemoveMealBtn.Click += RemoveMealBtn_Click;
             // 
             // AddMealBtn
             // 
