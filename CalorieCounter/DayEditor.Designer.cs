@@ -147,6 +147,7 @@
             RemoveFoodBtn.TabIndex = 14;
             RemoveFoodBtn.Text = "Remove";
             RemoveFoodBtn.UseVisualStyleBackColor = true;
+            RemoveFoodBtn.Click += RemoveFoodBtn_Click;
             // 
             // textBoxFood
             // 
