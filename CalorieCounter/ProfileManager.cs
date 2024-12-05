@@ -50,5 +50,18 @@ namespace CalorieCounter
          * but want to get this functionality down first
          * before I even try to mess with removing stuff.
          */
+
+        public static void AddDayToUser(User user, Day newDay)
+        {
+            var users = LoadProfiles();
+            var existingUser = users.FirstOrDefault(u => u.userName == user.userName);
+
+            if (existingUser != null)
+            {
+                existingUser.Days = user.Days;
+            }
+
+            SaveProfiles(users);
+        }
     }
 }
