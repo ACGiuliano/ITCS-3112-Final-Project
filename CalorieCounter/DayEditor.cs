@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CalorieCounter
 {
-    public partial class NewDay : Form
+    public partial class DayEditor : Form
     {
-        public NewDay()
+        public DayEditor()
         {
             InitializeComponent();
         }

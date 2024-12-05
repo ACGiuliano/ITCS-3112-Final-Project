@@ -28,59 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            NewDayBtn = new Button();
-            ViewDaysBtn = new Button();
-            NewDayLabel = new Label();
-            ViewDayLabel = new Label();
+            label1 = new Label();
+            ContinueBtn = new Button();
+            BackBtn = new Button();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
-            // NewDayBtn
+            // label1
             // 
-            NewDayBtn.Location = new Point(126, 156);
-            NewDayBtn.Name = "NewDayBtn";
-            NewDayBtn.Size = new Size(200, 62);
-            NewDayBtn.TabIndex = 0;
-            NewDayBtn.Text = "New Day";
-            NewDayBtn.UseVisualStyleBackColor = true;
-            NewDayBtn.Click += NewDayBtn_Click;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(236, 66);
+            label1.Name = "label1";
+            label1.Size = new Size(213, 32);
+            label1.TabIndex = 0;
+            label1.Text = "Select a day below";
             // 
-            // ViewDaysBtn
+            // ContinueBtn
             // 
-            ViewDaysBtn.Location = new Point(126, 348);
-            ViewDaysBtn.Name = "ViewDaysBtn";
-            ViewDaysBtn.Size = new Size(200, 62);
-            ViewDaysBtn.TabIndex = 1;
-            ViewDaysBtn.Text = "View Days";
-            ViewDaysBtn.UseVisualStyleBackColor = true;
-            ViewDaysBtn.Click += ViewDaysBtn_Click;
+            ContinueBtn.Location = new Point(374, 489);
+            ContinueBtn.Name = "ContinueBtn";
+            ContinueBtn.Size = new Size(203, 63);
+            ContinueBtn.TabIndex = 2;
+            ContinueBtn.Text = "Continue";
+            ContinueBtn.UseVisualStyleBackColor = true;
+            ContinueBtn.Click += ContinueBtn_Click;
             // 
-            // NewDayLabel
+            // BackBtn
             // 
-            NewDayLabel.AutoSize = true;
-            NewDayLabel.Location = new Point(355, 175);
-            NewDayLabel.Name = "NewDayLabel";
-            NewDayLabel.Size = new Size(258, 25);
-            NewDayLabel.TabIndex = 2;
-            NewDayLabel.Text = "Add a new day to the calendar.";
+            BackBtn.Location = new Point(74, 489);
+            BackBtn.Name = "BackBtn";
+            BackBtn.Size = new Size(203, 63);
+            BackBtn.TabIndex = 3;
+            BackBtn.Text = "Back";
+            BackBtn.UseVisualStyleBackColor = true;
+            BackBtn.Click += BackBtn_Click;
             // 
-            // ViewDayLabel
+            // dateTimePicker1
             // 
-            ViewDayLabel.AutoSize = true;
-            ViewDayLabel.Location = new Point(355, 367);
-            ViewDayLabel.Name = "ViewDayLabel";
-            ViewDayLabel.Size = new Size(238, 25);
-            ViewDayLabel.TabIndex = 3;
-            ViewDayLabel.Text = "View and edit previous days.";
+            dateTimePicker1.Location = new Point(188, 149);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(325, 31);
+            dateTimePicker1.TabIndex = 4;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // HomeScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(697, 593);
-            Controls.Add(ViewDayLabel);
-            Controls.Add(NewDayLabel);
-            Controls.Add(ViewDaysBtn);
-            Controls.Add(NewDayBtn);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(BackBtn);
+            Controls.Add(ContinueBtn);
+            Controls.Add(label1);
             Name = "HomeScreen";
             Text = "HomeScreen";
             Load += HomeScreen_Load;
@@ -90,9 +90,9 @@
 
         #endregion
 
-        private Button NewDayBtn;
-        private Button ViewDaysBtn;
-        private Label NewDayLabel;
-        private Label ViewDayLabel;
+        private Label label1;
+        private Button ContinueBtn;
+        private Button BackBtn;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -21,23 +21,16 @@ namespace CalorieCounter
     public partial class HomeScreen : Form
     {
         private MainForm mainForm;
+        private DateTime selectedDay;
         public HomeScreen(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
         }
 
-        private void NewDayBtn_Click(object sender, EventArgs e)
-        {
-            NewDay newDay = new NewDay();
-            newDay.Show();
-            this.Hide();
-        }
 
-        private void ViewDaysBtn_Click(object sender, EventArgs e)
-        {
 
-        }
+
 
         private void HomeScreen_Load(object sender, EventArgs e)
         {
@@ -47,6 +40,26 @@ namespace CalorieCounter
         private void HomeScreenFormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            selectedDay = dateTimePicker1.Value;
+            MessageBox.Show($"Day Selected: {selectedDay.ToShortDateString()}");
+
+        }
+
+        private void ContinueBtn_Click(object sender, EventArgs e)
+        {
+            DayEditor dayEditor = new DayEditor(selectedDay);
+            dayEditor.Show();
+            this.Hide();
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            mainForm.Show();
+            this.Hide();
         }
     }
 }
