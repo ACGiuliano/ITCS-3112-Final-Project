@@ -21,8 +21,15 @@ namespace CalorieCounter
             this.dayOfWeek = dayOfWeek;
             this.date = date;
             this.calorieLimit = calorieLimit;
-            consumedCalories = 0;
+            this.consumedCalories = 0;
             Meals = new List<Meal>();
+
+        }
+
+        public void AddMeal(Meal meal) 
+        {
+            Meals.Add(meal);
+            consumedCalories += meal.totalCalories;
         }
 
     }

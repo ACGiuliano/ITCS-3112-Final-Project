@@ -10,6 +10,7 @@ namespace CalorieCounter
         public int userHeight { get; set; }
         public double userWeight { get; set; }
         public double userGoalWeight { get; set; }
+        public List<Day> Days { get; set; }
 
         // constructor
         public User(string name, int height, double weight, double goalWeight)
@@ -18,6 +19,7 @@ namespace CalorieCounter
             userHeight = height;
             userWeight = weight;
             userGoalWeight = goalWeight;
+            Days = new List<Day>();
         }
 
         // default contructor
