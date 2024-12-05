@@ -9,16 +9,16 @@ namespace CalorieCounter
         public string mealType {  get; set; }
         public List<Food> foods { get; private set; }
 
+        /*
+         * Similar to how the consumedCalories property
+         * works in the Day class, this allows the total
+         * calories from food to dynamically update.
+         */
         public int totalCalories
         {
             get
             {
-                int total = 0;
-                foreach (var food in foods)
-                {
-                    total += food.calories;
-                }
-                return total;
+                return foods.Sum(f => f.calories);
             }
         }
 

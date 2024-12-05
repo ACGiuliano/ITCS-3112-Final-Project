@@ -39,6 +39,8 @@
             LabelOverLimit = new Label();
             AddFoodBtn = new Button();
             RemoveFoodBtn = new Button();
+            textBoxFood = new TextBox();
+            textBoxCalories = new TextBox();
             SuspendLayout();
             // 
             // BackBtn
@@ -67,6 +69,7 @@
             listBoxMeals.Name = "listBoxMeals";
             listBoxMeals.Size = new Size(337, 254);
             listBoxMeals.TabIndex = 6;
+            listBoxMeals.SelectedIndexChanged += listBoxMeals_SelectedIndexChanged;
             // 
             // RemoveMealBtn
             // 
@@ -133,6 +136,7 @@
             AddFoodBtn.TabIndex = 13;
             AddFoodBtn.Text = "Add";
             AddFoodBtn.UseVisualStyleBackColor = true;
+            AddFoodBtn.Click += AddFoodBtn_Click;
             // 
             // RemoveFoodBtn
             // 
@@ -143,11 +147,30 @@
             RemoveFoodBtn.Text = "Remove";
             RemoveFoodBtn.UseVisualStyleBackColor = true;
             // 
+            // textBoxFood
+            // 
+            textBoxFood.Location = new Point(645, 455);
+            textBoxFood.Name = "textBoxFood";
+            textBoxFood.PlaceholderText = "Food";
+            textBoxFood.Size = new Size(204, 31);
+            textBoxFood.TabIndex = 15;
+            // 
+            // textBoxCalories
+            // 
+            textBoxCalories.Location = new Point(645, 492);
+            textBoxCalories.Name = "textBoxCalories";
+            textBoxCalories.PlaceholderText = "Calories";
+            textBoxCalories.Size = new Size(150, 31);
+            textBoxCalories.TabIndex = 16;
+            textBoxCalories.KeyPress += textBoxCalories_KeyPress;
+            // 
             // DayEditor
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1158, 742);
+            Controls.Add(textBoxCalories);
+            Controls.Add(textBoxFood);
             Controls.Add(RemoveFoodBtn);
             Controls.Add(AddFoodBtn);
             Controls.Add(LabelOverLimit);
@@ -178,5 +201,7 @@
         private Label LabelOverLimit;
         private Button AddFoodBtn;
         private Button RemoveFoodBtn;
+        private TextBox textBoxFood;
+        private TextBox textBoxCalories;
     }
 }

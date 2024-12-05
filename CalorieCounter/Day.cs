@@ -10,10 +10,23 @@ namespace CalorieCounter
         public string dayOfWeek { get; set; }
         public DateTime date { get; set; }
         public double calorieLimit { get; set; }
-        public int consumedCalories { get; private set; }
         public bool overLimit => consumedCalories > calorieLimit;
 
-        
+        /*
+         * Allows calories to update dynamically rather
+         * than only updating when the AddMeal method is called.
+         * Makes it easier to update the calorie count on the
+         * DayEditor form.
+         */
+        public int consumedCalories
+        {
+            get
+            {
+                return Meals.Sum(m => m.totalCalories);
+            }
+        }
+
+
         public List<Meal> Meals { get; private set; }
 
         public Day(string dayOfWeek,  DateTime date, double calorieLimit)
@@ -21,7 +34,6 @@ namespace CalorieCounter
             this.dayOfWeek = dayOfWeek;
             this.date = date;
             this.calorieLimit = calorieLimit;
-            this.consumedCalories = 0;
             Meals = new List<Meal>();
 
         }
@@ -29,7 +41,6 @@ namespace CalorieCounter
         public void AddMeal(Meal meal) 
         {
             Meals.Add(meal);
-            consumedCalories += meal.totalCalories;
         }
 
     }

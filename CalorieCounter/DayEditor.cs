@@ -45,7 +45,8 @@ namespace CalorieCounter
          */
         private void UpdateSummary()
         {
-            labelCalsConsumed.Text = $"Calories Consumed: {selectedDay.consumedCalories} / {selectedDay.calorieLimit}";
+            int totalCalories = selectedDay.consumedCalories;
+            labelCalsConsumed.Text = $"Calories Consumed: {totalCalories} / {selectedDay.calorieLimit}";
             LabelOverLimit.Visible = selectedDay.overLimit;
         }
 
@@ -56,7 +57,7 @@ namespace CalorieCounter
 
         private void AddMealBtn_Click(object sender, EventArgs e)
         {
-            string selectedMealType = comboBoxMealType.SelectedItem?.ToString();
+            string selectedMealType = comboBoxMealType.SelectedItem.ToString();
 
             if (!string.IsNullOrEmpty(selectedMealType))
             {
@@ -76,8 +77,80 @@ namespace CalorieCounter
             }
             else
             {
-                 MessageBox.Show("Select a meal type from the dropdown.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Select a meal type from the dropdown.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void listBoxMeals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxMeals.SelectedIndex == -1) return;
+
+            string selectedMealType = listBoxMeals.SelectedItem.ToString().Split('-')[0].Trim(); // removes the calorie count from the listbox item
+
+            Meal selectedMeal = selectedDay.Meals.FirstOrDefault(m => m.mealType == selectedMealType);
+
+            listBoxFood.Items.Clear();
+            foreach (Food food in selectedMeal.foods)
+            {
+                listBoxFood.Items.Add($"{food.name} - {food.calories} calories");
+            }
+        }
+
+        // Makes sure user can only input numeric values for calories
+        private void textBoxCalories_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void AddFoodBtn_Click(object sender, EventArgs e)
+        {
+            if (listBoxMeals.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a meal to add food.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // input validation for food name and calories
+            string foodName = textBoxFood.Text.Trim();
+            if (string.IsNullOrWhiteSpace(foodName))
+            {
+                MessageBox.Show("Food must have a name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!int.TryParse(textBoxCalories.Text.Trim(), out int foodCalories) || foodCalories <= 0)
+            {
+                MessageBox.Show("Enter a valid positive number for calories.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string selectedMealType = listBoxMeals.SelectedItem.ToString().Split('-')[0].Trim();
+            Meal selectedMeal = selectedDay.Meals.FirstOrDefault(m => m.mealType == selectedMealType);
+
+            if (selectedMeal != null)
+            {
+                Food newFood = new Food(foodName, foodCalories);
+                selectedMeal.AddFood(newFood);
+
+                listBoxFood.Items.Add($"{newFood.name} - {newFood.calories} calories");
+
+                UpdateMealsBox(); // need to update calories in the meals listbox
+            }
+
+            textBoxFood.Clear();
+            textBoxCalories.Clear();
+        }
+
+        private void UpdateMealsBox()
+        {
+            listBoxMeals.Items.Clear();
+            foreach (Meal meal in selectedDay.Meals)
+            {
+                listBoxMeals.Items.Add($"{meal.mealType} - {meal.totalCalories} calories");
+            }
+            UpdateSummary();
         }
     }
 }
