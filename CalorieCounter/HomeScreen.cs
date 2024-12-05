@@ -20,12 +20,14 @@ namespace CalorieCounter
      */
     public partial class HomeScreen : Form
     {
+        private User currentUser;
         private MainForm mainForm;
         private DateTime selectedDay;
-        public HomeScreen(MainForm mainForm)
+        public HomeScreen(MainForm mainForm, User currentUser)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            this.currentUser = currentUser;
         }
 
 
@@ -35,6 +37,7 @@ namespace CalorieCounter
         private void HomeScreen_Load(object sender, EventArgs e)
         {
             this.FormClosing += HomeScreenFormClosing;
+            selectedDay = dateTimePicker1.Value;
         }
 
         private void HomeScreenFormClosing(object sender, FormClosingEventArgs e)
@@ -51,7 +54,11 @@ namespace CalorieCounter
 
         private void ContinueBtn_Click(object sender, EventArgs e)
         {
-            DayEditor dayEditor = new DayEditor(selectedDay);
+            // Takes the selected day and turns it into a day object so we can pass it to the day editor form
+            // Uses users calorie limit to determine day's calorie limit
+            Day day = new Day(selectedDay.DayOfWeek.ToString(), selectedDay, currentUser.CalculateCalorieLimit());
+
+            DayEditor dayEditor = new DayEditor(mainForm, day);
             dayEditor.Show();
             this.Hide();
         }

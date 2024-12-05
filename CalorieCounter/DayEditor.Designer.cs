@@ -28,12 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DayEditor";
+            BackBtn = new Button();
+            LabelDayInfo = new Label();
+            listBoxMeals = new ListBox();
+            SuspendLayout();
+            // 
+            // BackBtn
+            // 
+            BackBtn.Location = new Point(115, 495);
+            BackBtn.Name = "BackBtn";
+            BackBtn.Size = new Size(198, 61);
+            BackBtn.TabIndex = 4;
+            BackBtn.Text = "Back";
+            BackBtn.UseVisualStyleBackColor = true;
+            // 
+            // LabelDayInfo
+            // 
+            LabelDayInfo.AutoSize = true;
+            LabelDayInfo.Location = new Point(140, 81);
+            LabelDayInfo.Name = "LabelDayInfo";
+            LabelDayInfo.Size = new Size(173, 25);
+            LabelDayInfo.TabIndex = 5;
+            LabelDayInfo.Text = "Thursday 12/5/2024";
+            // 
+            // listBoxMeals
+            // 
+            listBoxMeals.FormattingEnabled = true;
+            listBoxMeals.ItemHeight = 25;
+            listBoxMeals.Location = new Point(140, 152);
+            listBoxMeals.Name = "listBoxMeals";
+            listBoxMeals.Size = new Size(337, 254);
+            listBoxMeals.TabIndex = 6;
+            // 
+            // DayEditor
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(707, 650);
+            Controls.Add(listBoxMeals);
+            Controls.Add(LabelDayInfo);
+            Controls.Add(BackBtn);
+            Name = "DayEditor";
+            Text = "DayEditor";
+            Load += DayEditor_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+        private Button BackBtn;
+        private Label LabelDayInfo;
+        private ListBox listBoxMeals;
     }
 }

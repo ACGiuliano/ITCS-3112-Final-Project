@@ -9,14 +9,14 @@ namespace CalorieCounter
 
         public string dayOfWeek { get; set; }
         public DateTime date { get; set; }
-        public int calorieLimit { get; set; }
+        public double calorieLimit { get; set; }
         public int consumedCalories { get; private set; }
         public bool overLimit => consumedCalories > calorieLimit;
 
         
         public List<Meal> Meals { get; private set; }
 
-        public Day(string dayOfWeek,  DateTime date, int calorieLimit)
+        public Day(string dayOfWeek,  DateTime date, double calorieLimit)
         {
             this.dayOfWeek = dayOfWeek;
             this.date = date;

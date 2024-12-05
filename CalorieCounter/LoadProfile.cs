@@ -67,7 +67,7 @@ namespace CalorieCounter
             // Show profile details when selected
             MessageBox.Show($"Profile selected:\n\n{selectedUser.ToString()}", "Profile Successfully Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            HomeScreen homeScreen = new HomeScreen();
+            HomeScreen homeScreen = new HomeScreen(mainForm, selectedUser);
             homeScreen.Show();
             this.Hide();
         }

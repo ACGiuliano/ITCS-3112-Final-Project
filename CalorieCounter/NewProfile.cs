@@ -65,7 +65,7 @@ namespace CalorieCounter
 
                 MessageBox.Show($"Profile {userName} created.", "Profile Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                HomeScreen homeScreen = new HomeScreen(mainForm);
+                HomeScreen homeScreen = new HomeScreen(mainForm, newUser);
                 homeScreen.Show();
                 this.Hide();
 
