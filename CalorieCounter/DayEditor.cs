@@ -12,13 +12,15 @@ namespace CalorieCounter
 {
     public partial class DayEditor : Form
     {
-        private MainForm mainForm;
+        private User currentUser;
+        private HomeScreen homeScreen;
         private Day selectedDay;
-        public DayEditor(MainForm mainForm, Day selectedDay)
+        public DayEditor(HomeScreen homeScreen, Day selectedDay, User currentUser)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this.homeScreen = homeScreen;
             this.selectedDay = selectedDay;
+            this.currentUser = currentUser;
         }
 
         private void DayEditor_Load(object sender, EventArgs e)
@@ -205,6 +207,19 @@ namespace CalorieCounter
                     MessageBox.Show($"{selectedFoodName} removed from {selectedMealType}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            ProfileManager.AddDayToUser(currentUser, selectedDay);
+
+            MessageBox.Show("Day saved.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            homeScreen.Show();
+            this.Hide();
         }
     }
 }

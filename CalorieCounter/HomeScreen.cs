@@ -23,11 +23,11 @@ namespace CalorieCounter
         private User currentUser;
         private MainForm mainForm;
         private DateTime selectedDay;
-        public HomeScreen(MainForm mainForm, User currentUser)
+        public HomeScreen(MainForm mainForm, User loadedUser)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            this.currentUser = currentUser;
+            currentUser = loadedUser;
         }
 
 
@@ -54,11 +54,11 @@ namespace CalorieCounter
 
         private void ContinueBtn_Click(object sender, EventArgs e)
         {
-            // Takes the selected day and turns it into a day object so we can pass it to the day editor form
-            // Uses users calorie limit to determine day's calorie limit
-            Day day = new Day(selectedDay.DayOfWeek.ToString(), selectedDay, currentUser.CalculateCalorieLimit());
+            var existingDay = currentUser.Days.Find(d => d.date.Date == selectedDay.Date);
 
-            DayEditor dayEditor = new DayEditor(mainForm, day);
+            Day dayToEdit = existingDay ?? new Day(selectedDay.DayOfWeek.ToString(), selectedDay.Date, currentUser.CalculateCalorieLimit());
+
+            DayEditor dayEditor = new DayEditor(this, dayToEdit, currentUser);
             dayEditor.Show();
             this.Hide();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace CalorieCounter
 {
@@ -7,7 +8,9 @@ namespace CalorieCounter
     {
         //properties
         public string mealType {  get; set; }
-        public List<Food> foods { get; private set; }
+
+        [JsonInclude]
+        public List<Food> foods { get; private set; } = new List<Food>();
 
         /*
          * Similar to how the consumedCalories property
@@ -25,7 +28,6 @@ namespace CalorieCounter
         public Meal(string mealType) 
         {
             this.mealType = mealType;
-            foods = new List<Food>();
         }
 
         public void AddFood(Food food) 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace CalorieCounter
 {
@@ -11,6 +12,9 @@ namespace CalorieCounter
         public DateTime date { get; set; }
         public double calorieLimit { get; set; }
         public bool overLimit => consumedCalories > calorieLimit;
+
+        [JsonInclude]
+        public List<Meal> Meals { get; private set; } = new List<Meal>();
 
         /*
          * Allows calories to update dynamically rather
@@ -26,15 +30,11 @@ namespace CalorieCounter
             }
         }
 
-
-        public List<Meal> Meals { get; private set; }
-
         public Day(string dayOfWeek,  DateTime date, double calorieLimit)
         {
             this.dayOfWeek = dayOfWeek;
-            this.date = date;
+            this.date = date.Date;
             this.calorieLimit = calorieLimit;
-            Meals = new List<Meal>();
 
         }
 

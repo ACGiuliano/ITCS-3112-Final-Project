@@ -64,6 +64,8 @@ namespace CalorieCounter
 
             User selectedUser = (User)ProfileDropdown.SelectedItem;
 
+            Console.WriteLine($"Selected user: {selectedUser.userName}"); // Show profile details when selected
+
             // Show profile details when selected
             MessageBox.Show($"Profile selected:\n\n{selectedUser.ToString()}", "Profile Successfully Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

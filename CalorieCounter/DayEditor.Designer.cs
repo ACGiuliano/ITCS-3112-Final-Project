@@ -41,6 +41,7 @@
             RemoveFoodBtn = new Button();
             textBoxFood = new TextBox();
             textBoxCalories = new TextBox();
+            SaveBtn = new Button();
             SuspendLayout();
             // 
             // BackBtn
@@ -51,6 +52,7 @@
             BackBtn.TabIndex = 4;
             BackBtn.Text = "Back";
             BackBtn.UseVisualStyleBackColor = true;
+            BackBtn.Click += BackBtn_Click;
             // 
             // LabelDayInfo
             // 
@@ -166,11 +168,22 @@
             textBoxCalories.TabIndex = 16;
             textBoxCalories.KeyPress += textBoxCalories_KeyPress;
             // 
+            // SaveBtn
+            // 
+            SaveBtn.Location = new Point(828, 601);
+            SaveBtn.Name = "SaveBtn";
+            SaveBtn.Size = new Size(198, 61);
+            SaveBtn.TabIndex = 17;
+            SaveBtn.Text = "Save";
+            SaveBtn.UseVisualStyleBackColor = true;
+            SaveBtn.Click += SaveBtn_Click;
+            // 
             // DayEditor
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1158, 742);
+            Controls.Add(SaveBtn);
             Controls.Add(textBoxCalories);
             Controls.Add(textBoxFood);
             Controls.Add(RemoveFoodBtn);
@@ -205,5 +218,6 @@
         private Button RemoveFoodBtn;
         private TextBox textBoxFood;
         private TextBox textBoxCalories;
+        private Button SaveBtn;
     }
 }

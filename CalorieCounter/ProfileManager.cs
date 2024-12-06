@@ -16,15 +16,15 @@ namespace CalorieCounter
         private static string filePath = "userProfiles.json"; // this ends up in the bin/debug/net8.0-windows directory
 
         public static void SaveProfiles(List<User> users)
-        {           
+        {
             string jsonString = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(filePath, jsonString);                        
+            File.WriteAllText(filePath, jsonString);
         }
 
         // Load profiles from JSON file
         public static List<User> LoadProfiles()
         {
-            if (File.Exists(filePath)) 
+            if (File.Exists(filePath))
             {
                 string jsonString = File.ReadAllText(filePath);
                 var profiles = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>();
@@ -53,16 +53,28 @@ namespace CalorieCounter
 
         public static void AddDayToUser(User user, Day newDay)
         {
-            user.Days.Add(newDay);
             var users = LoadProfiles();
             var existingUser = users.FirstOrDefault(u => u.userName == user.userName);
 
             if (existingUser != null)
             {
-                existingUser.Days = user.Days;
+                var existingDay = existingUser.Days.FirstOrDefault(d => d.date.Date == newDay.date.Date);
+                if (existingDay != null)
+                {
+                    existingDay.Meals.Clear();
+                    existingDay.Meals.AddRange(newDay.Meals);
+                }
+                else
+                {
+                    existingUser.Days.Add(newDay);
+                }
+            }
+            else
+            {
+                users.Add(user);
             }
 
-            SaveProfiles(users);
-        }
+                 SaveProfiles(users);
+        } 
     }
 }

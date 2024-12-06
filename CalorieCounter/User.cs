@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CalorieCounter
 {
@@ -10,7 +11,9 @@ namespace CalorieCounter
         public int userHeight { get; set; }
         public double userWeight { get; set; }
         public double userGoalWeight { get; set; }
-        public List<Day> Days { get; set; }
+
+        [JsonInclude]
+        public List<Day> Days { get; set; } = new List<Day>();
 
         // constructor
         public User(string name, int height, double weight, double goalWeight)
@@ -19,7 +22,6 @@ namespace CalorieCounter
             userHeight = height;
             userWeight = weight;
             userGoalWeight = goalWeight;
-            Days = new List<Day>();
         }
 
         // default contructor
